@@ -7,18 +7,22 @@
 			   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 			   var charactersLength = characters.length;
 			   for ( var i = 0; i < length; i++ ) {
-			      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+			      // result += characters.charAt(Math.floor(Math.random() * charactersLength));
+			      result += characters.charAt(randomNum(charactersLength));
 			   }
 			   alert(result);
 			}
 
 			function fnSelect() {
-				var cars = ["Saab", "Volvo", "BMW"];
+				var cars = ["Honda", "Volvo", "BMW", "Toyota", "GMC"];
 
-				//Generate random number
-				var x = Math.floor(Math.random() * cars.length);
+				alert(cars[randomNum(cars.length)]);
+			}
 
-				alert(cars[x]);
+			//Generate random number starting from index 0
+			function randomNum(x) {
+				var y = Math.floor(Math.random() * x);
+				return y;
 			}
 		</script>
 	</head>
