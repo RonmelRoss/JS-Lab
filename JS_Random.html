@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Random Strings</title>
+		<script type="text/javascript">
+			function randomStrings(length) {
+			   var result           = '';
+			   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			   var charactersLength = characters.length;
+			   for ( var i = 0; i < length; i++ ) {
+			      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+			   }
+			   alert(result);
+			}
+
+			function fnSelect() {
+				var cars = ["Saab", "Volvo", "BMW"];
+
+				//Generate random number
+				var x = Math.floor(Math.random() * cars.length);
+
+				alert(cars[x]);
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Generate Random Strings</h1>
+		<hr>
+		<div>
+			<input type="button" value="Generate Strings" onclick="randomStrings(5)">
+		</div>
+		<br>
+		<div>
+			<input type="button" value="Generate Name" onclick="fnSelect()">
+		</div>
+	</body>
+</html>

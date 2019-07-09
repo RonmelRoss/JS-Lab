@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>JS Operators</title>
+    </head>
+    <body>
+        <h1>JS Operators Lab</h1>
+        <input type="text" id="age">
+        <input type="button" value="Click Me!" onclick="myFunction()">
+        <p id="demo">Value will be shown here.</p>
+        <script>
+            function myFunction() {
+              var age, voteable;
+              age = document.getElementById("age").value;
+              //voteable = (age < 18) ? "Too young":"Old enough";
+              voteable = (age < 18) ? alert("Too young"):alert("Old enough");
+              document.getElementById("demo").innerHTML = voteable + " to vote.";
+            }
+        </script>
+
+    </body>
+</html>
