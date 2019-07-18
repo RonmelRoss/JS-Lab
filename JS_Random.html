@@ -15,14 +15,23 @@
 
 			function fnSelect() {
 				var cars = ["Honda", "Volvo", "BMW", "Toyota", "GMC"];
+				var x = cars[randomNum(cars.length)];
 
-				alert(cars[randomNum(cars.length)]);
+				// alert(cars[randomNum(cars.length)]);
+				alert(x);
+				document.getElementById("result").innerHTML = x;
 			}
 
 			//Generate random number starting from index 0
 			function randomNum(x) {
 				var y = Math.floor(Math.random() * x);
 				return y;
+			}
+
+			function fnRandom() {
+				// var x = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+				var x = Math.random().toString(36).substring(2,15);
+				alert(x);
 			}
 		</script>
 	</head>
@@ -35,6 +44,13 @@
 		<br>
 		<div>
 			<input type="button" value="Generate Name" onclick="fnSelect()">
+		</div>
+		<br>
+		<div>
+			<input type="button" value="Generate Random" onclick="fnRandom()">
+		</div>
+		<br>
+		<div id="result">
 		</div>
 	</body>
 </html>
