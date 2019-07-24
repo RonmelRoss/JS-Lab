@@ -3,13 +3,14 @@
     </head>
     <body>
         <h1>Validate File Size</h1>
-        <p>Max Size is 307200B</p>
+        <p>Max Size is 233150</p>
+        <p>Alerts "File is too big" if max file size is reached.</p>
         <input type="file" id="file">
         <script>
             var uploadField = document.getElementById("file");
 
             uploadField.onchange = function() {
-                if(this.files[0].size > 307200){
+                if(this.files[0].size > 233150){
                 alert("File is too big!");
                 this.value = "";
                 };

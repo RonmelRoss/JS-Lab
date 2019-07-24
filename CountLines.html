@@ -3,28 +3,28 @@
 
     </head>
     <body>
-        <h1>Read Lines</h1>
-        <p>Returns number of lines in a text file.</p>
+        <h1>Count Lines</h1>
+        <p>Returns number of lines in a text-based file.</p>
         <input type="file" id="fileinput" />
         <script type="text/javascript">
             function readSingleFile(evt) {
                 //Retrieve the first (and only!) File from the FileList object
-                var f = evt.target.files[0]; 
+                var f = evt.target.files[0];
 
                 if (f) {
                 var r = new FileReader();
-                r.onload = function(e) { 
+                r.onload = function(e) {
                     var contents = e.target.result;
-                    // alert( "Got the file.n" 
+                    // alert( "Got the file.n"
                     //     +"name: " + f.name + "\n"
                     //     +"type: " + f.type + "\n"
                     //     +"size: " + f.size + " bytes\n"
-                    //     + "starts with: " + contents.substr(0, contents.indexOf("\n")) 
+                    //     + "starts with: " + contents.substr(0, contents.indexOf("\n"))
                     // );
                     alert(lineCount(contents));
                 }
                 r.readAsText(f);
-                } else { 
+                } else {
                 alert("Failed to load file");
                 }
             }
