@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="radio" name="RadioOptions" id="ShowRadio" onclick="show_block('DeleteShelf')"> Show Options
+                        <br />
+                        <input type="radio" name="RadioOptions" id="HideRadio"> Hide Options
+                    </td>
+                </tr>
+                <tr style="display: none" id="DeleteShelf">
+                    <th>Deletion Reason</th>
+                    <td>
+                        <div>
+                            <label class="radio">
+                                    <input type="radio" name="DeleteReason" value="1">Input Error
+                                    <input type="radio" name="DeleteReason" value="2">Logic Error
+                                    <input type="radio" name="DeleteReason" value="3">Machine Error
+                                    <input type="radio" name="DeleteReason" value="4">User Error
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="button" value="GET" onclick="getVal('DeleteReason')">
+        </form>
+    </body>
+    <script>
+        function getVal(name){
+            var radios = document.getElementsByName(name);
+            var x = 0;
+
+            for (var i = 0, length = radios.length; i < length; i++) {
+                if (radios[i].checked) {
+                    // do whatever you want with the checked radio
+                    // alert(radios[i].value);
+                    x = radios[i].value;
+
+                    // only one radio can be logically checked, don't check the rest
+                    break;
+                } else {
+                    x = "Please select an option.";
+                }
+            }
+            alert(x);
+        }
+        function show_block(id) {
+            if (document.getElementById(id).style.display == "") {
+                document.getElementById(id).style.display = "none";
+            } else {
+                document.getElementById(id).style.display = "";
+            }
+        }
+        document.getElementById("HideRadio").addEventListener('click',function(){
+            document.getElementById("DeleteShelf").style.display = "none";
+            // var varx = document.getElementsByName("DeleteReason");
+            // var vary = varx[0].getAttributeNode("name");
+            // alert(vary.value);
+            // getVal("DeleteReason");
+        });
+    </script>
+</html>
