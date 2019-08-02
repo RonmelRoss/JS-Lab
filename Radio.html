@@ -8,6 +8,7 @@
                 border: 1px solid black;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
         <form>
@@ -59,19 +60,22 @@
         function show_block(id) {
             if (document.getElementById(id).style.display == "") {
                 document.getElementById(id).style.display = "none";
+                document.getElementsByName("DeleteReason")[0].removeAttribute("required",""); //remove required attribute on element
             } else {
                 document.getElementById(id).style.display = "";
+                document.getElementsByName("DeleteReason")[0].setAttribute("required",""); //set element to required
             }
         }
         document.getElementById("HideRadio").addEventListener('click',function(){
             document.getElementById("DeleteShelf").style.display = "none";
+            document.getElementsByName("DeleteReason")[0].removeAttribute("required",""); //remove required attribute on element
             // var varx = document.getElementsByName("DeleteReason");
             // var vary = varx[0].getAttributeNode("name");
             // alert(vary.value);
             // getVal("DeleteReason");
         });
-        document.getElementsByName("DeleteReason").addEventListener('change',function(){
-            alert('move!');
-        });
+        // document.getElementsByName("DeleteReason").addEventListener('change',function(){
+        //     alert('move!');
+        // });
     </script>
 </html>
