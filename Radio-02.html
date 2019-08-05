@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <style>
+                table {
+                    border-collapse: collapse;
+                }
+                table, th, td {
+                    border: 1px solid black;
+                }
+                [name=textDescription]{
+                    font-size: 20px;
+                    color:black;
+                    background-color:royalblue;
+                    padding: 5px;
+                }
+            </style>
+    </head>
+    <body>
+        <h1>Dynamic Radio Button</h1>
+        <form>
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <div id="radiobtn">
+                            <input type="radio" name="RadioOptions" id="ShowRadio"> Show Options
+                            <input type="radio" name="RadioOptions"> Show Description
+                            <input type="radio" name="RadioOptions"> Do Nothing
+                        </div>
+                    </td>
+                </tr>
+                <tr style="display: none" id="DeleteShelf">
+                    <th>Deletion Reason</th>
+                    <td>
+                        <div>
+                            <label class="radio">
+                                    <input type="radio" name="DeleteReason" value="1">Input Error
+                                    <input type="radio" name="DeleteReason" value="2">Logic Error
+                                    <input type="radio" name="DeleteReason" value="3">Machine Error
+                                    <input type="radio" name="DeleteReason" value="4">User Error
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="display: none" id="Description">
+                    <td>
+                        <div name="textDescription">
+                            <strong>This is a page that shows content controlled by radio buttons.</strong>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+            <input type="button" value="GET" onclick="getVal('DeleteReason')">
+        </form>
+
+        <script>
+            function getVal(name){
+                var radios = document.getElementsByName(name);
+                var x = 0;
+
+                for (var i = 0, length = radios.length; i < length; i++) {
+                    if (radios[i].checked) {
+                        // do whatever you want with the checked radio
+                        // alert(radios[i].value);
+                        x = radios[i].value;
+
+                        // only one radio can be logically checked, don't check the rest
+                        break;
+                    } else {
+                        x = "Please select an option.";
+                    }
+                }
+                alert(x);
+            }
+
+            document.getElementById("radiobtn").addEventListener("change",function(){
+                if(document.getElementById("ShowRadio").checked){
+                    //alert("show!");
+                    document.getElementById("DeleteShelf").style.display = "";
+                    document.getElementsByName("DeleteReason")[0].setAttribute("required","");
+                } else {
+                    //alert("hide!");
+                    document.getElementById("DeleteShelf").style.display = "none";
+                    document.getElementsByName("DeleteReason")[0].removeAttribute("required","");
+                }
+
+                if(document.getElementsByName("RadioOptions")[1].checked){
+                    document.getElementById("Description").style.display = "";
+                } else {
+                    document.getElementById("Description").style.display = "none";
+                }
+
+            });
+
+            // document.getElementsByName("RadioOptions")[1].addEventListener("click",function(){
+            //     alert()
+            // });
+
+        </script>
+    </body>
+</html>
