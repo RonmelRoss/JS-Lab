@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Functions</title>
+</head>
+<body>
+    <h1>ES6 Functions</h1>
+    <input type="button" value="Add (Legacy)" onclick="addFunc(3,5)">
+    <br><br>
+    <input type="button" value="Add (ES6)" onclick="add(5,7)">
+    <br><br>
+    <input type="button" value="Greet Ronmel (ES6)" onclick="alert(greet('Ronmel'))">
+    <br><br>
+    <input type="button" value="Greet Anybody (ES6)">
+    <br><br>
+    <input type="button" value="Array Push (ES6)">
+    <br><br>
+    <input type="button" id="startCounter" value="Start Counter (Pre-ES6 vs ES6)">
+    <br><br>
+    <input type="button" id="volCube" value="Volume of Cube">
+    <div id="demo"></div>
+
+    <script>
+        function addFunc(x, y) {
+            var sum = x+y;
+            alert(sum);
+        }
+        const add = (x, y) => {
+            let sum = x + y;
+            alert(sum);
+        }
+        const hi = () => "Welcome, ";
+        const greet = x => hi() + x;
+
+        document.getElementsByTagName("input")[3].addEventListener("click",function(){
+            let x = prompt("Input guest: ");
+            alert(greet(x));
+        });
+
+        document.getElementsByTagName("input")[4].addEventListener("click",function(){
+            // array for each with arrow functions
+            const arr = [2, 3, 7, 8];
+            arr.forEach(v => {
+            console.log(v * 2);
+            });
+        });
+
+        document.getElementById("startCounter").addEventListener("click",function(){
+            new Counter();
+        });
+
+        // Pre-ES6 implementation
+        // function Counter() {
+        //     this.count = 0;
+        //     setInterval(function() {
+        //         console.log(this.count++);
+        //     }, 1000);
+        //     //Fix on the resulting Nan is shown below
+        //     //}.bind(this), 1000);
+        // }
+
+        // ES6 implementation
+        function Counter() {
+            this.count = 0;
+            setInterval(() => {
+                console.log(this.count++);
+            }, 1000);
+        }
+
+        document.getElementById("volCube").addEventListener("click",function(){
+            let len = prompt("Length of a side: ")
+
+            const test = (a, b = 3) => {
+                return Math.pow(a,b);
+            }
+            document.getElementById("demo").innerHTML = "Volume of cube is: " + (test(len));
+        });
+    </script>
+</body>
+</html>
