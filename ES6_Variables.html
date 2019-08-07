@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Variables</title>
+</head>
+<body>
+    <h1>ES6 Variabless</h1>
+    <div>
+        <label for="areaCalc">Calculate Area of Circle: </label>
+        <input type="button" id="areaCalc" value="Calculate">
+    </div>
+    <br>
+    <div>
+        <label for="addString">Add String to Array: </label>
+        <input type="button" id="addString" value="Add">
+    </div>
+
+    <script>
+        document.getElementById("areaCalc").addEventListener("click",function(){
+            const pi = 3.14159265359;
+            let r = parseInt(prompt("Input radius: "));
+
+            alert("Area of circle: " + pi*Math.pow(r,2));
+        });
+
+        document.getElementById("addString").addEventListener("click",function(){
+            const items = ["The list ", "of items are: "];
+            // throws an error since you are trying to reassign the const
+            //items = 2;
+
+            let val = parseInt(prompt("Input number of entries: "));
+
+            if (val == 0 || isNaN(val)) {
+                items.push("NONE");
+            } else {
+                for(let x=0; x<val; x++) {
+                // adds to end of array
+                // no error thrown
+                items.push(prompt("Input string: "));
+                }
+            }
+            alert(items);
+        });
+    </script>
+</body>
+</html>

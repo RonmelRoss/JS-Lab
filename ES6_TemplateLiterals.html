@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Template Literals</title>
+</head>
+<body>
+    <h1>ES6 Template Literals</h1>
+    <input type="button" value="Print">
+    <div id="demo"></div>
+
+    <script>
+        document.getElementsByTagName("input")[0].addEventListener("click",function(){
+            // let name = url='www.google.com';
+            // let msg = `${name}`;
+            // alert(msg);
+            let a = parseInt(prompt("Input first value: "));
+            let b = parseInt(prompt("Input second value: "));
+
+            if(isNaN(a) || isNaN(b)){
+                alert("Please input number.");
+            } else {
+                //Adding conditions inside template literals
+                let result = `${ a + b > 100 ? "The sum is large." : "The sum is small."}`;
+                document.getElementById("demo").innerHTML = result;
+            }
+        });
+    </script>
+</body>
+</html>
