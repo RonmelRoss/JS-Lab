@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Objects</title>
+</head>
+<body>
+    <h1>ES6 Objects</h1>
+    <input type="button" value="Grow">
+    <br><br>
+    <input type="button" value="Increment">
+    <br><br>
+    <input type="button" value="Computed Property">
+    <br><br>
+    <input type="button" value="Custom Object Property">
+    <br><br>
+    <input type="button" id="copyObjects" value="Copy Objects (Immutable)">
+    <br><br>
+    <input type="button" id="copyObjMutable" value="Copy Objects (Mutable)">
+    <script>
+        document.getElementsByTagName("input")[0].addEventListener("click",function(){
+            let height = 10; //property value shorthand to initialize properties with a variable
+            let tree = {
+                    height,
+                    color: 'green',
+                    //new method definition shorthand
+                    grow() {
+                        this.height += 2;
+                    }
+                };
+            tree.grow();
+            console.log(tree.height); // 12
+        });
+        document.getElementsByTagName("input")[1].addEventListener("click",function(){
+            //tricky increments
+            var i = 0;
+            var a = {
+            ['foo' + ++i]: i++,
+            ['foo' + ++i]: i++,
+            ['foo' + ++i]: ++i
+            };
+
+            console.log(a.foo1); // 1
+            console.log(a.foo3); // 3
+            console.log(a.foo5); // 6
+        });
+        document.getElementsByTagName("input")[2].addEventListener("click",function(){
+            let prop = 'name';
+            let id = '1234';
+            let mobile = '08923';
+
+            let user = {
+            [prop]: 'Jack',
+            [`user_${id}`]: `${mobile}`
+            };
+            console.log(user.name);
+            //console.log(user.user_1234); //08923
+            console.log(user[`user_${id}`]); // 08923
+        });
+        document.getElementsByTagName("input")[3].addEventListener("click",function(){
+            var param = 'size';
+            var config = {
+                [param]: 12,
+                ['mobile' + param.charAt(0).toUpperCase() + param.slice(1)]: 4
+            };
+            console.log(config.size);
+            console.log(config.mobileSize); // 4
+        });
+        document.getElementById("copyObjects").addEventListener("click",function(){
+            let person = {
+                name: 'Jack',
+                age: 18,
+                sex: 'male'
+            };
+            let student = {
+                name: 'Bob',
+                age: 20,
+                xp: '2',
+                school: 'Silliman University'
+            };
+
+            let newPerson = Object.assign({}, person, {birthday:'January 1, 1980', school:student.school}, address("Cebu", "Philippines", "6000"));
+
+            console.log("Name: " + newPerson.name);
+            console.log("Birthday: " + newPerson.birthday);
+            console.log("School: " + newPerson.school);
+            console.log("Address: " + newPerson.city + ", " + newPerson.country + " " + newPerson);
+            // console.log(newPerson.country);
+            // console.log(newPerson.zip);
+        });
+        document.getElementById("copyObjMutable").addEventListener("click",function(){
+            let person = {
+                name: 'Jack',
+                age: 18,
+                sex: 'male'
+            };
+            let student = {
+                name: 'Bob',
+                age: 20,
+                xp: '2',
+                school: 'Silliman University'
+            };
+            let newPerson = person;
+            newPerson.name = "James"; //also changes the 'name' property of 'person' object
+            newPerson = Object.assign({}, student);
+
+            console.log("Name of person: " + person.name);
+            console.log(newPerson.name + " studies in " + newPerson.school);
+        });
+
+        function address(cty, cntry, zp) {
+            let loc = {
+                // city: 'Cebu City',
+                // country: 'Philippines',
+                // zip: '6000'
+                city: cty,
+                country: cntry,
+                zip: zp
+            };
+            return loc;
+        }
+    </script>
+</body>
+</html>
