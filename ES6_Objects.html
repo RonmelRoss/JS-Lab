@@ -106,8 +106,15 @@
             newPerson.name = "James"; //also changes the 'name' property of 'person' object
             newPerson = Object.assign({}, student);
 
+            //another option to duplicate objects which results in fastest cloning
+            //across all browsers (if you donÅft expect cyclic objects
+            //and donÅft need to preserve built-in types)
+            let anotherPerson = JSON.parse(JSON.stringify(student));
+
             console.log("Name of person: " + person.name);
             console.log(newPerson.name + " studies in " + newPerson.school);
+            console.log("The other person, " + anotherPerson.name + ", is " + anotherPerson.age + " yrs old.");
+            console.log(anotherPerson.color);
         });
 
         function address(cty, cntry, zp) {
