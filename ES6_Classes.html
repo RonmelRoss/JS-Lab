@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Classes</title>
+</head>
+<body>
+    <h1>ES6 Classes</h1>
+    <input type="button" value="Get Area">
+    <br><br>
+    <input type="button" value="Get Distance">
+    <br><br>
+    <input type="button" value="Get Sound">
+    <br><br>
+    <input type="button" value="Get Person">
+
+    <script>
+        class Rectangle {
+            constructor(height, width) {
+                this.height = height;
+                this.width = width;
+            }
+            get area(){
+                return this.calcArea();
+            }
+            calcArea(){
+                return this.height*this.width;
+            }
+        }
+
+        //In the unnamed class expression,
+        //a variable is simply assigned the class definition
+        var Square = class {
+            constructor(height, width) {
+                this.height = height;
+                this.width = width;
+            }
+        };
+
+        //Static methods cannot be called through a class instance.
+        //Static methods are often used to create utility functions for an application.
+        class Point {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            static distance(a, b) {
+                const dx = a.x - b.x;
+                const dy = a.y - b.y;
+                return Math.hypot(dx, dy);
+            }
+        }
+
+        //Inheritance in ES6
+        class Animal {
+            constructor(name){
+                this.name = name;
+            }
+            speak(){
+                console.log(this.name+" makes a noise.");
+            }
+        }
+        class Dog extends Animal {
+            speak(){
+                alert(this.name+" barks.");
+                super.speak(); //super keywor is used to call parent's method
+            }
+        }
+
+        class Human {
+            constructor (name){
+                this.name = name;
+            }
+        }
+        class Student extends Human {
+            constructor(name,age){
+                super(name);
+                this.age = age;
+            }
+        }
+
+        document.getElementsByTagName("input")[0].addEventListener("click",function(){
+            const square = new Rectangle(5, 5);
+            const poster = new Rectangle(2, 3);
+            alert(square.area);
+        });
+
+        document.getElementsByTagName("input")[1].addEventListener("click",function(){
+            const p1 = new Point(7, 2);
+            const p2 = new Point(3, 8);
+            alert(Point.distance(p1, p2));
+        });
+
+        document.getElementsByTagName("input")[2].addEventListener("click",function(){
+            let iro = new Dog("Cassie");
+            iro.speak();
+        });
+
+        document.getElementsByTagName("input")[3].addEventListener("click",function(){
+            let stud = new Student("George","15");
+            alert(`${stud.name} is ${stud.age} yrs old.`);
+        });
+    </script>
+</body>
+</html>
