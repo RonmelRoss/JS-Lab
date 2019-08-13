@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Maps & Sets</title>
+</head>
+<body>
+    <h1>ES6 Maps & Sets</h1>
+    <input type="button" value="Maps">
+    <br><br>
+    <input type="button" value="Sets">
+    <script>
+        document.getElementsByTagName("input")[0].addEventListener("click",function(){
+            let map = new Map();
+            map.set('k1', 'v1').set('k2', 'v2');
+
+            console.log(map.size); // 2
+            console.log(map.get('k1')); // v1
+            console.log(map.has('k2')); // true
+            for (let kv of map.entries())
+            console.log(kv[0] + " : " + kv[1]);
+        });
+        document.getElementsByTagName("input")[1].addEventListener("click",function(){
+            let set = new Set();
+            set.add(5).add(9).add(59).add(9); //although 9 has been added twice, only one 9 values appears on the set variable
+
+            console.log(set.has(9));
+            for (let v of set.values())
+            console.log(v);
+        });
+    </script>
+</body>
+</html>
