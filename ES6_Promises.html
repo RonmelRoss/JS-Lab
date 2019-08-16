@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Promises</title>
+</head>
+<body>
+    <h1>ES6 Promises</h1>
+    <input type="button" value="Promise - setTimeout()">
+    <br><br>
+    <input type="button" value="Promise - ES6">
+
+    <script>
+    document.getElementsByTagName("input")[0].addEventListener("click",function(){
+        setTimeout(function(){
+            console.log("Work 1");
+            setTimeout(function(){
+                console.log("Work 2");
+            },1000);
+        },1000);
+        console.log("End");
+    });
+    document.getElementsByTagName("input")[1].addEventListener("click",function(){
+        function asyncFunc(work) {
+        return new Promise(function(resolve, reject) {
+            if (work === "")
+            reject(Error("Nothing"));
+            setTimeout(function() {
+            resolve(work);
+            }, 1000);
+        });
+        }
+
+        asyncFunc("Work 1") // Task 1
+        .then(function(result) {
+            console.log(result);
+            return asyncFunc("Work 2"); // Task 2
+        }, function(error) {
+            console.log(error);
+        })
+        .then(function(result) {
+            console.log(result);
+        }, function(error) {
+            console.log(error);
+        });
+
+        console.log("End");
+    });
+    //See pyramid of doom for more ideas about promises
+
+    </script>
+</body>
+</html>
