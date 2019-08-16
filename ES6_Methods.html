@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Methods</title>
+</head>
+<body>
+    <h1>ES6 Methods</h1>
+    <p>Check console.</p>
+    <script>
+        //new syntax for finding the first element of an array by its value and a rule
+        var val = [4, 5, 1, 8, 2, 0].find(x => x > 4);
+        console.log(val);
+
+        //get the index of the item above by using the findIndex() method:
+        var getVal = [4, 5, 1, 8, 2, 0].findIndex(x => x > 5);
+        console.log(getVal);
+
+
+        //old syntax for repeating strings
+        console.log(Array(3 + 1).join("foo"));
+        //new syntax for repeating strings
+        console.log("foo".repeat(3)); // foofoofoo
+
+        //new syntax for searching strings
+        console.log("SoloLearn".startsWith("Solo", 0)); // true
+        console.log("SoloLearn".endsWith("Solo", 4)); // true
+        console.log("SoloLearn".includes("loLe")); // true
+        console.log("SoloLearn".includes("olo", 1)); // true
+        console.log("SoloLearn".includes("olo", 2)); // false
+    </script>
+</body>
+</html>
