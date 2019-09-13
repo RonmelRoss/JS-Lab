@@ -14,20 +14,24 @@
     <br><br>
     <input type="button" id="addEven" value="Add Even">
     <br><br>
+    <label for="spreadOperator">Demonstration on using spread operator:</label>
     <input type="button" id="spreadOperator" value="Spread Operator">
     <script>
+        // Before ES6
         document.getElementById("lessES6").addEventListener("click",function(){
             let x = [2, 4, 6, 7];
             console.log(containsAll(x, 2, 4, 7));
             console.log(containsAll(x, 6, 4, 9));
         });
 
+        // ES6
         document.getElementById("ES6").addEventListener("click",function(){
             let x = [2, 4, 6, 7];
             console.log(containsAllES6(x, 2, 4, 7));
             console.log(containsAllES6(x, 6, 4, 9));
         });
 
+        // Add Even
         document.getElementById("addEven").addEventListener("click",function(){
             let even = [];
 
@@ -52,19 +56,26 @@
             alert(addEvenArray(even));
         });
 
+        // Spread Operator
         document.getElementById("spreadOperator").addEventListener("click",function(){
-
-            //Spread operators on functions
             const myFunction = (w, x, y, z) => {
                 console.log(w + x + y + z);
             };
+
+            //Spread operators on functions
             let args = [1, 2, 3];
             myFunction(...args,4);
+
+            //Before spread operators
+            let argsTwo = [1, 2, 3, 4];
+            myFunction.apply(null, argsTwo);
 
             //Spread operators on dates
             var dateFields = [1970, 0, 1];  // 1 Jan 1970
             var date = new Date(...dateFields);
             console.log(date);
+            console.log(date.getDate());
+            console.log(date.getDay());
 
             //Spread operators on arrays
             let newArr = ['Three', 'Four'];
